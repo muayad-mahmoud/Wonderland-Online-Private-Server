@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PServer v2", "PServer v2.csproj", "{55127703-4A74-4EA3-B0BB-C829DA93FAC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55127703-4A74-4EA3-B0BB-C829DA93FAC2}.Debug|x86.ActiveCfg = Debug|x86
+		{55127703-4A74-4EA3-B0BB-C829DA93FAC2}.Debug|x86.Build.0 = Debug|x86
+		{55127703-4A74-4EA3-B0BB-C829DA93FAC2}.Release|x86.ActiveCfg = Release|x86
+		{55127703-4A74-4EA3-B0BB-C829DA93FAC2}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {914ADC86-4266-44FB-82B3-3ED2F1718A4C}
+	EndGlobalSection
+EndGlobal

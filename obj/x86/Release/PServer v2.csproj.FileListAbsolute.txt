@@ -1,0 +1,10 @@
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\bin\Release\PServer v2.exe.config
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\bin\Release\PServer v2.exe
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\bin\Release\PServer v2.pdb
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\PServer_v2.Form1.resources
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\PServer_v2.Properties.Resources.resources
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\PServer v2.exe
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Release\PServer v2.pdb

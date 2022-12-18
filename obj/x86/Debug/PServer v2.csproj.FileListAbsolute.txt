@@ -1,0 +1,60 @@
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\bin\Debug\PServer v2.exe
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\bin\Debug\PServer v2.pdb
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\PServer_v2.Form1.resources
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\PServer_v2.Properties.Resources.resources
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\PServer v2.exe
+C:\Users\Rommel\AppData\Local\Temporary Projects\PServer v2\obj\x86\Debug\PServer v2.pdb
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\PServer v2.exe
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\PServer v2.pdb
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\bin\Debug\PServer v2.exe
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\bin\Debug\PServer v2.pdb
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\PServer_v2.Form1.resources
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\PServer_v2.Properties.Resources.resources
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Rommel\documents\visual studio 2010\Projects\PServer v2\PServer v2\bin\Debug\PServer v2.exe.config
+C:\Users\Rommel JR\Dropbox\Projects\PServer v2\PServer v2\bin\Debug\PServer v2.exe.config
+C:\Users\Rommel JR\Dropbox\Projects\PServer v2\PServer v2\obj\x86\Debug\PServer v2.exe
+C:\Users\Rommel JR\Dropbox\Projects\PServer v2\PServer v2\obj\x86\Debug\PServer v2.pdb
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer v2.csproj.AssemblyReference.cache
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer_v2.Form1.resources
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer_v2.Properties.Resources.resources
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer v2.csproj.GenerateResource.cache
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer v2.csproj.CoreCompileInputs.cache
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer v2.exe
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer v2.pdb
+G:\Asuza Files\Asuza sc work alt\bin\Debug\PServer v2.exe.config
+G:\Asuza Files\Asuza sc work alt\bin\Debug\PServer v2.exe
+G:\Asuza Files\Asuza sc work alt\bin\Debug\PServer v2.pdb
+G:\Asuza Files\Asuza sc work alt\bin\Debug\EntityFramework.dll
+G:\Asuza Files\Asuza sc work alt\bin\Debug\EntityFramework.SqlServer.dll
+G:\Asuza Files\Asuza sc work alt\bin\Debug\System.Data.SQLite.dll
+G:\Asuza Files\Asuza sc work alt\bin\Debug\System.Data.SQLite.EF6.dll
+G:\Asuza Files\Asuza sc work alt\bin\Debug\System.Data.SQLite.Linq.dll
+G:\Asuza Files\Asuza sc work alt\bin\Debug\EntityFramework.xml
+G:\Asuza Files\Asuza sc work alt\bin\Debug\EntityFramework.SqlServer.xml
+G:\Asuza Files\Asuza sc work alt\bin\Debug\System.Data.SQLite.xml
+G:\Asuza Files\Asuza sc work alt\obj\x86\Debug\PServer v2.csproj.CopyComplete
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\PServer v2.exe.config
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\PServer v2.exe
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\PServer v2.pdb
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\EntityFramework.dll
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\System.Data.SQLite.dll
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\EntityFramework.xml
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\bin\Debug\System.Data.SQLite.xml
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer v2.csproj.AssemblyReference.cache
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer_v2.Form1.resources
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer_v2.Properties.Resources.resources
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer v2.csproj.GenerateResource.cache
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer v2.csproj.CoreCompileInputs.cache
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer v2.csproj.CopyComplete
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer v2.exe
+C:\Users\Helliuminati\Downloads\Working_Source-20221215T204723Z-001\Working_Source\obj\x86\Debug\PServer v2.pdb

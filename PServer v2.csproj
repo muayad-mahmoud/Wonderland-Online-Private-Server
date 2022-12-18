@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55127703-4A74-4EA3-B0BB-C829DA93FAC2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PServer_v2</RootNamespace>
+    <AssemblyName>PServer v2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.EF6.1.0.117.0\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.117.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataBase\Class1.cs" />
+    <Compile Include="DataLoaders\EveLoader.cs" />
+    <Compile Include="DataLoaders\GroundMMg.cs" />
+    <Compile Include="DataLoaders\ItemLoader.cs" />
+    <Compile Include="DataLoaders\NpcManager.cs" />
+    <Compile Include="DataLoaders\SceneLoader.cs" />
+    <Compile Include="DataLoaders\Skill Manager.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC.cs" />
+    <Compile Include="NetWork\ACS\AC0.cs" />
+    <Compile Include="NetWork\ACS\AC01.cs" />
+    <Compile Include="NetWork\ACS\AC10.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC11.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC12.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC13.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC14.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC02.cs" />
+    <Compile Include="NetWork\ACS\AC15.cs" />
+    <Compile Include="NetWork\ACS\AC20.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC23.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC24.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC25.cs" />
+    <Compile Include="NetWork\ACS\AC26.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC27.cs" />
+    <Compile Include="NetWork\ACS\AC29.cs" />
+    <Compile Include="NetWork\ACS\AC30.cs" />
+    <Compile Include="NetWork\ACS\AC31.cs" />
+    <Compile Include="NetWork\ACS\AC32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC33.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC34.cs" />
+    <Compile Include="NetWork\ACS\AC35.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC04.cs" />
+    <Compile Include="NetWork\ACS\AC40.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC41.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC05.cs" />
+    <Compile Include="NetWork\ACS\AC50.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC51.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC52.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC53.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC54.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC06.cs" />
+    <Compile Include="NetWork\ACS\AC62.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC63.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC66.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC07.cs" />
+    <Compile Include="NetWork\ACS\AC69.cs" />
+    <Compile Include="NetWork\ACS\AC70.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC75.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\ACS\AC08.cs" />
+    <Compile Include="NetWork\ACS\AC09.cs" />
+    <Compile Include="NetWork\ACS\AC89.cs" />
+    <Compile Include="NetWork\ACS\AC90.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NetWork\DataExt\Character.cs" />
+    <Compile Include="NetWork\DataExt\CharacterFriend.cs" />
+    <Compile Include="NetWork\DataExt\Characterskills.cs" />
+    <Compile Include="NetWork\DataExt\Client.cs" />
+    <Compile Include="NetWork\DataExt\Data.cs" />
+    <Compile Include="NetWork\DataExt\DHolder.cs" />
+    <Compile Include="NetWork\DataExt\Enums.cs" />
+    <Compile Include="NetWork\DataExt\MailManager.cs" />
+    <Compile Include="NetWork\DataExt\RiceBall.cs" />
+    <Compile Include="NetWork\DataExt\SkillItem.cs" />
+    <Compile Include="NetWork\DataExt\TeamManager.cs" />
+    <Compile Include="NetWork\DataExt\TentManager.cs" />
+    <Compile Include="NetWork\DataExt\TradingManager.cs" />
+    <Compile Include="NetWork\DataExt\TransportationManager.cs" />
+    <Compile Include="NetWork\Managers\BattleManager.cs" />
+    <Compile Include="NetWork\Managers\EquipManager.cs" />
+    <Compile Include="NetWork\DataExt\EveExt.cs" />
+    <Compile Include="NetWork\DataExt\Items.cs" />
+    <Compile Include="NetWork\DataExt\Map.cs" />
+    <Compile Include="NetWork\DataExt\Stathelper.cs" />
+    <Compile Include="NetWork\DataExt\User.cs" />
+    <Compile Include="NetWork\Delegates.cs" />
+    <Compile Include="NetWork\Global.cs" />
+    <Compile Include="NetWork\Listener.cs" />
+    <Compile Include="NetWork\Managers\CharacterManager.cs" />
+    <Compile Include="NetWork\Managers\Event System.cs" />
+    <Compile Include="NetWork\Managers\GmSystem.cs" />
+    <Compile Include="NetWork\Managers\ImMallManager.cs" />
+    <Compile Include="NetWork\Managers\Instance System.cs" />
+    <Compile Include="NetWork\Managers\InventoryManager.cs" />
+    <Compile Include="NetWork\Managers\ManufactureSystem.cs" />
+    <Compile Include="NetWork\Managers\MapManager.cs" />
+    <Compile Include="NetWork\Managers\PetManager.cs" />
+    <Compile Include="NetWork\Managers\PserverExtSystem.cs" />
+    <Compile Include="NetWork\Managers\StorageSystem.cs" />
+    <Compile Include="NetWork\Managers\UserManager.cs" />
+    <Compile Include="NetWork\Packet.cs" />
+    <Compile Include="NetWork\Registration\JOBBER.cs" />
+    <Compile Include="NetWork\Registration\RegClient.cs" />
+    <Compile Include="NetWork\Registration\RegServer.cs" />
+    <Compile Include="NetWork\Server.cs" />
+    <Compile Include="Other\Templates.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net40\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
