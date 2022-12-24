@@ -79,7 +79,10 @@ namespace PServer_v2.NetWork.DataExt
                 //this will process all activities of a map until server closes
                 for (int a = 0; a < mapData.Npclist.Count; a++)
                     if (mapData.Npclist[a].NeedUpdate(globals.UpTime.Elapsed))
-                        //mapData.Npclist[a].Update(Characters, globals);
+                        //check for character place
+                        //get list of all players
+                        
+                        mapData.Npclist[a].Update(Characters, globals);
                 //look at all battle maps
                 battleMng.Process();
                 //update ground items
@@ -661,6 +664,10 @@ namespace PServer_v2.NetWork.DataExt
         public void StartPKNpc(cCharacter starter, cFighter enemy) //TODO these should be lists of players
         {
             battleMng.StartPKNpc(starter, enemy);
+        }
+        public void StartAmbush(cCharacter starter, cFighter enemy)
+        {
+            battleMng.StartBattleAmbush(starter, enemy);
         }
         
     }

@@ -110,6 +110,7 @@ namespace PServer_v2.DataLoaders
             NpcName = "";
             for (int n = 0; n < len; n++) { NpcName += (char)data[ptr + (20 - n)]; } ptr += 21;
             Type = byteXor(data[ptr]); ptr++;
+            
             NpcID = wordXor(getWord(data, ptr)); ptr += 2;
             ImageNum = wordXor(getWord(data, ptr)); ptr += 2;
             ImageNumSmall = wordXor(getWord(data, ptr)); ptr += 2;
@@ -195,6 +196,7 @@ namespace PServer_v2.DataLoaders
                 {
                     Npc i = new Npc();
                     i.Load(data, n * 148);
+                    
                     NpcList.Add(i);
                 }
 

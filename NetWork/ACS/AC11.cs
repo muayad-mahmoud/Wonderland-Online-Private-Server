@@ -92,6 +92,7 @@ namespace PServer_v2.NetWork.ACS
                     } break;
                 case 3: //pk againts npc
                     {
+
                         PServer_v2.DataLoaders.Npc target = g.gNpcManager.GetNpcbyID((ushort)targetID);
                         cFighter f = new cFighter(g);
                         f.character = null;
@@ -102,7 +103,8 @@ namespace PServer_v2.NetWork.ACS
                         f.ukval1 = 3; 
                         f.type = pkType;
                         f.clickID = clickID;
-
+                        g.Log(targetID.ToString());
+                        g.Log(clickID.ToString());
                         cMap m = g.gMapManager.GetMapByID(c.map.MapID);
                         if (m != null)
                         {
@@ -174,6 +176,33 @@ namespace PServer_v2.NetWork.ACS
         public void Send_250(UInt16 background, List<cFighter> flist,cCharacter target)
         {
             //this is sent to the player entering combat, and lists all other players already in
+            background = 80;
+            if (flist.Count > 0)
+            {
+                cSendPacket p = new cSendPacket(g);
+                p.Header(11, 250);
+                p.AddWord(background);
+                foreach (cFighter f in flist)
+                {
+                    p.AddByte(f.ukval1);
+                    p.AddByte(f.type); 
+                    p.AddDWord(f.id);
+                    p.AddWord(1); p.AddDWord(f.ownerID);
+                    
+                    p.AddByte(f.x); p.AddByte(f.y);
+                    p.AddDWord(f.maxhp); p.AddWord(f.maxsp);
+                    p.AddDWord(f.curhp); p.AddWord(f.cursp);
+                    p.AddByte(f.lvl);
+                    p.AddByte((byte)f.element); p.AddByte(f.rebirth); p.AddByte((byte)f.job);
+                }
+                p.SetSize();
+                p.character = target;
+                p.Send();
+            }
+        }
+        public void send_250_ambush(UInt16 background, List<cFighter> flist,cCharacter target)
+        {
+            background = 80;
             if (flist.Count > 0)
             {
                 cSendPacket p = new cSendPacket(g);

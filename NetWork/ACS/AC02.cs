@@ -40,8 +40,7 @@ namespace PServer_v2.NetWork.ACS
             str = g.packet.GetStringRaw(2, textLen);
 
             cCharacter c = g.packet.character;
-            if (g.gUserManager.GetListByID(c.userID).SubIM(0))
-            {
+
 
                 string[] words = str.Split(' ');
                 if (words.Length >= 1)
@@ -50,13 +49,25 @@ namespace PServer_v2.NetWork.ACS
                         {
                             case ":warp":
                                 {
+                                //:warp 11016 x y
                                     cWarp w = new cWarp();
                                     UInt16 value = 0;
-                                    try { value = UInt16.Parse(words[1]); }
+                                    UInt16 value_x = 0;
+                                    UInt16 value_y = 0;
+
+                                    try 
+                                        { 
+                                        
+                                        value = UInt16.Parse(words[1]); 
+                                        value_x = UInt16.Parse(words[2]);
+                                        value_y = UInt16.Parse(words[3]);
+                                        w.x = value_x; w.y = value_y; w.mapTo = value; w.id = 0;
+                                        g.packet.character.map.WarpRequest(WarpType.SpecialWarp,g.packet.character,0,w);
+                                        g.ac20.DoWarp(w);
+                            
+                                        }
                                     catch { }
-                                    w.x = 500; w.y = 500; w.mapTo = value; w.id = 0;
-                                    g.packet.character.map.WarpRequest(WarpType.SpecialWarp,g.packet.character,0,w);
-                                    g.ac20.DoWarp(w);
+                                   
                                     
                                 } break;
                             case ":item":
@@ -128,8 +139,7 @@ namespace PServer_v2.NetWork.ACS
                                 } break;
                         }
                 }
-            }
-
+            
             else g.packet.character.map.LocalChat(g.packet.character, str);
 
                 //g.logList.Enqueue("[Local] <" + g.packet.character.name + "> " + str + "\r\n");

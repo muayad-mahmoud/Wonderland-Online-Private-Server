@@ -79,7 +79,7 @@ namespace PServer_v2
             globals.ac26 = new cAC_26(globals); //sets gold???
             globals.ac27 = new cAC_27(globals); // props shopkeeper related
             globals.ac29 = new cAC_29(globals); // props keeper related
-            //globals.ac30; //??
+            globals.ac30 = new cAC_30(globals); //??
             globals.ac31 = new cAC_31(globals);//npc record related
             globals.ac32 = new cAC_32(globals); //social emotes
             globals.ac33 = new cAC_33(globals);//public cAC_33 ac33; //??
@@ -110,14 +110,14 @@ namespace PServer_v2
 
             try
             {
-                globals.gItemManager.LoadItems("C:\\pServer\\data\\Item.dat");
-                globals.gSceneManager.LoadScenes("C:\\pServer\\data\\SceneData.Dat");
-                globals.gEveManager.LoadFile("C:\\pServer\\data\\eve.EMG");
+                globals.gItemManager.LoadItems("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\Item.dat");
+                globals.gSceneManager.LoadScenes("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\SceneData.Dat");
+                globals.gEveManager.LoadFile("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\eve.EMG");
                 globals.gMapManager.SetListBox(listBox1);
                 globals.gskillManager = new DataLoaders.cSkillDat(globals);
-                globals.gskillManager.LoadSkills("C:\\pServer\\data\\Skill.Dat");
+                globals.gskillManager.LoadSkills("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\Skill.Dat");
                 globals.gNpcManager = new DataLoaders.NpcDat(globals);
-                globals.gNpcManager.LoadNpc("C:\\pServer\\data\\Npc.Dat");
+                globals.gNpcManager.LoadNpc("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\Npc.Dat");
                 globals.gImMall_Manager = new ImMall_Manager(globals);
             }
             catch (Exception t) { MessageBox.Show(t.Message); }
@@ -316,6 +316,7 @@ namespace PServer_v2
                 case 24: globals.ac24.SwitchBoard(); break;
                 case 27: globals.ac27.SwitchBoard(); break;
                 case 29: globals.ac29.SwitchBoard(); break;
+                    case 30: globals.ac30.SwitchBoard(); break;
                 case 32:
                     {
                         globals.ac32.SwitchBoard();

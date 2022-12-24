@@ -476,7 +476,9 @@ namespace PServer_v2.NetWork.Managers
             foreach (cFighter f in re)
             {
                 if (f.player)
+                    f.character.inbattle = false;
                     RemFighter(f);
+                    
             }
             this.delete = true;
         }
@@ -861,6 +863,33 @@ namespace PServer_v2.NetWork.Managers
                         if (flist.Count > 0)
                             globals.ac11.Send_5(flist, fighter);
                     } break;
+                    case eBattleType.normal:
+                    {
+                        foreach (cFighter e in rightside)
+                            if (startedby.character != fighter)
+                            {
+                                if (!e.player)
+                                    flist.Add(e);
+                            }
+                            else
+                            {
+                                if (e != startedby && e.placement != startedby.placement)
+                                    flist.Add(e);
+
+                            }
+                        foreach (cFighter e in leftside)
+                            if (startedby.character != fighter)
+                            {
+                                if (!e.player)
+                                    flist.Add(e);
+                            }
+                            else
+                                if (e != startedby && e.placement != startedby.placement)
+                                    flist.Add(e);
+
+                        if (flist.Count > 0)
+                            globals.ac11.Send_5(flist, fighter);
+                    }break;
             }
         }
         void Send_11_250(cFighter fighter, bool starter, cCharacter target)
@@ -873,8 +902,22 @@ namespace PServer_v2.NetWork.Managers
                     if (e.player && e.character != target)
                         flist.Add(e);
                 foreach (cFighter e in leftside)
+                {
                     if (e.player && e.character != target)
+                    {
                         flist.Add(e);
+                    }
+                    else if(e.placement == eFighterType.mobside)
+                    {
+                        flist.Add(e);
+                    }
+                    
+                }
+                    
+                
+                
+                        
+                    
                 globals.ac11.Send_250(background, flist, target);
             }
             else
@@ -976,7 +1019,8 @@ namespace PServer_v2.NetWork.Managers
         }
         public cBattle StartPKNpc(cCharacter starter, cFighter enemy) //TODO these should be lists of players
         {
-            
+            starter.inbattle = true;
+            globals.Log("Battle Started \r\n");
             cBattle battle = new cBattle(globals);
             battle.type = cBattle.eBattleType.pk;
 
@@ -1009,6 +1053,43 @@ namespace PServer_v2.NetWork.Managers
 
             return battle;
         }
+        public cBattle StartBattleAmbush(cCharacter starter, cFighter enemy) //TODO these should be lists of players
+        {
+            starter.inbattle = true;
+            globals.Log("Battle Started \r\n");
+            cBattle battle = new cBattle(globals);
+            battle.type = cBattle.eBattleType.normal;
+
+            cFighter f = new cFighter(globals);
+            f.SetFrom(starter);
+            f.clickID = enemy.clickID;
+            f.ukval1 = 1;
+            f.placement = eFighterType.pcside;
+            battle.startedby = enemy;
+            f.starter = false;
+            battle.AddFightertoRside(f);
+            if (starter.Party.Count > 0)
+            {
+                foreach (cCharacter d in starter.Party.TeamMembers)
+                {
+                    cFighter fe = new cFighter(globals);
+                    fe.SetFrom(d);
+                    fe.clickID = enemy.clickID;
+                    fe.ukval1 = 1;
+                    fe.placement = eFighterType.pcside;
+                    battle.AddFightertoRside(fe);
+                }
+            }
+            enemy.placement = eFighterType.mobside;
+            battle.AddFightertoLside(enemy);
+            battle.Send_BattleInfo();
+            battle.StartRound();
+            battle.active = true;
+            battleList.Add(battle);
+
+            return battle;
+        }
+        
 
 
         public void Process()

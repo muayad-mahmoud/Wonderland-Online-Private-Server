@@ -14,8 +14,10 @@ namespace PServer_v2.NetWork.ACS
 
         public void SwitchBoard()
         {
+            g.Log("Got here");
             switch (g.packet.b)
             {
+                
                 //case 6: break;
                 default:
                     {

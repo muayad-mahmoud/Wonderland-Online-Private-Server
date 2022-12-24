@@ -41,7 +41,7 @@ UnknownWord22  :------->  0
 UnknownWord23  :------->  0
 UnknownWord24  :------->  0
 UnknownWord25  :------->  0
-InstanceMaxPlayers  :------->  15
+InstanceMaxPlayers  :------->  16
 InstanceGuildRestricted  :------->  0
 UnknownByte10  :------->  0
 UnknownByte11  :------->  0

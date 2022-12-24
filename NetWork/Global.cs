@@ -69,7 +69,8 @@ namespace PServer_v2.NetWork
         public cAC_26 ac26; //sets gold???
         public cAC_27 ac27;//props shopkeep related
         public cAC_29 ac29; //props keep related
-        //public cAC_30 ac30; //??
+        
+        public cAC_30 ac30;
         public cAC_31 ac31; // npc record related
         public cAC_32 ac32; //social emotes
         public cAC_33 ac33; //??

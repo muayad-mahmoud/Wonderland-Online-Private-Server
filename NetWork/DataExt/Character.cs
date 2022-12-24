@@ -59,6 +59,7 @@ namespace PServer_v2.NetWork.DataExt
         public cCharacterFriend Friends;
         public TeamManager Party;
         public cInventory inv;
+        public cInventory storage;
         public cEquipManager eq;
         public TransportationManager vechile;
         public TentManager myTent;
@@ -171,7 +172,8 @@ namespace PServer_v2.NetWork.DataExt
             level = 0;
             color1 = 0;
             color2 = 0;
-            if (inv == null) inv = new cInventory(globals, this);
+            if (inv == null) inv = new cInventory(globals, this,false);
+            if(storage == null) storage = new cInventory(globals,this,true);
             if(eq == null) eq = new cEquipManager(globals,this);
             state = 0;
             inCarnie = false;
@@ -217,6 +219,7 @@ namespace PServer_v2.NetWork.DataExt
                 skills.LoadSkills((string)r["skills"]);
                 //load inv
                 inv.Load(characterID);
+                storage.Load(characterID);
                 Friends.LoadFriends(r["friends"].ToString());
                 Mail.LoadMail((string)r["mail"]);
                 pets.Load();
@@ -267,6 +270,7 @@ namespace PServer_v2.NetWork.DataExt
             inv.Send_Inventory();
             eq.Send_EQS();
             globals.ac26.Send_4(gold);//244, 68, 6, 0, 26, 4, 70, 78, 0, 0,  //gold
+            storage.Send_Storage();
             globals.ac5.Send_3(this);
             globals.gMapManager.GetMapByID(map.MapID).LogintoMap(this);
                 

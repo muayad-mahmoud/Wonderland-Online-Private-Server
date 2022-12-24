@@ -54,7 +54,7 @@ namespace PServer_v2.NetWork.ACS
             p.AddByte(135);
             p.AddByte(3);
             p.AddByte(1);
-            p.AddArray("P-Server".ToCharArray());
+            p.AddArray("My Server".ToCharArray());
             p.SetSize();
             p.character = g.packet.character;
             p.Send();

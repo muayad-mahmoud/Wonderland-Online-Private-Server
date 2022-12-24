@@ -13,11 +13,12 @@ namespace PServer_v2.NetWork.Managers
         cCharacter own;
         cGlobals globals;
         public cInvItem[][] mainInv = new cInvItem[11][];
-
-        public cInventory(cGlobals d, cCharacter y)
+        bool storage;
+        public cInventory(cGlobals d, cCharacter y, bool st)
         {
             own = y;
             globals = d;
+            storage = st;
             for (int n = 0; n < 11; n++)
             {
                 mainInv[n] = new cInvItem[6];
@@ -89,6 +90,7 @@ namespace PServer_v2.NetWork.Managers
             }
             return data;
         }
+        
         public void logInv()
         {
             string s = "";
@@ -146,13 +148,63 @@ namespace PServer_v2.NetWork.Managers
             }
 
         }
+       
 
         #region DataBase tools
         public bool Load(UInt32 id)
         {
             try
             {
-                DataRow r = GetDBData(id);
+                if(storage)
+                { 
+                    globals.Log("loading storage");
+                    DataRow r = GetDBData(id,true);
+                        if (r != null)
+                {
+                    string heading = "";
+                    for (int a = 1; a < 51; a++)
+                    {
+                        heading = "inv" + a;
+                        string istr = (string)r[heading]; istr = istr.Trim();
+                        if (istr.Length > 0)
+                        
+                        {
+                            var n = globals.NumbertoMatrix(a);
+                            string[] words = istr.Split(' ');
+                            int ct = words.Length;
+                            if (ct > 0) mainInv[n[0]][n[1]].ID = UInt16.Parse(words[0]);
+                            if (ct > 1) mainInv[n[0]][n[1]].ammt = byte.Parse(words[1]);
+                            if (ct > 2) mainInv[n[0]][n[1]].damage = byte.Parse(words[2]);
+                            if (ct > 3) mainInv[n[0]][n[1]].parent = byte.Parse(words[3]);
+                            if (mainInv[n[0]][n[1]].ID > 0)
+                                mainInv[n[0]][n[1]].itemtype = globals.gItemManager.GetItemByID(mainInv[n[0]][n[1]].ID);
+                            if (mainInv[n[0]][n[1]].itemtype.Veichle)
+                                own.vechile.Add(mainInv[n[0]][n[1]].ID, a);
+                        }
+
+                    }
+                    for (int n = 1; n < 7; n++)
+                    {
+                        heading = "wear" + n;
+                        string istr = (string)r[heading]; istr = istr.Trim();
+                        if (istr.Length > 0)
+                        {
+                            string[] words = istr.Split(' ');
+                            int ct = words.Length;
+                            if (ct > 0) own.eq.clothes[n].ID = UInt16.Parse(words[0]);
+                            if (ct > 1) own.eq.clothes[n].ammt = byte.Parse(words[1]);
+                            if (ct > 2) own.eq.clothes[n].damage = byte.Parse(words[2]);
+                            if (ct > 3) own.eq.clothes[n].parent = byte.Parse(words[3]);
+                        }
+
+                    }
+
+                    return true;
+                }
+                }
+                else
+                {
+                    DataRow r = GetDBData(id,false);
                 if (r != null)
                 {
                     string heading = "";
@@ -195,13 +247,33 @@ namespace PServer_v2.NetWork.Managers
 
                     return true;
                 }
+                }
             }
             catch { }
             return false;
         }
         public bool Save(UInt32 id)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
+            if (this.storage)
+            {
+                Dictionary<string, string> d = new Dictionary<string, string>();
+            string where = "invID = " + id;
+            string heading = "";
+            for (int a = 1; a < 51; a++)
+            {
+                var n = globals.NumbertoMatrix(a);
+                cInvItem i = mainInv[n[0]][n[1]]; //i.Clear();
+                heading = "inv" + a;
+                string v = "";
+                v += i.ID + " " + i.ammt + " " + i.damage + " " + i.parent;
+                d.Add(heading, v);
+            }
+            
+            return globals.WloDatabase.Update("Storage", d, where);
+            }
+            else
+            {
+                Dictionary<string, string> d = new Dictionary<string, string>();
             string where = "invID = " + id;
             string heading = "";
             for (int a = 1; a < 51; a++)
@@ -222,6 +294,8 @@ namespace PServer_v2.NetWork.Managers
                 d.Add(heading, v);
             }
             return globals.WloDatabase.Update("inventory", d, where);
+            }
+            
         }
         public bool Delete(UInt32 id)
         {
@@ -307,12 +381,33 @@ namespace PServer_v2.NetWork.Managers
             return retVal;
         }
 
-        public DataRow GetDBData(UInt32 id)
+        public DataRow GetDBData(UInt32 id, bool storage)
         {
             DataRow bRetVal = null;
             //lock (thisLock)
             {
-                try
+                if (storage)
+                {
+                    try
+                    {
+                        
+                    DataTable table;
+                    String query = "select * from Storage where invID = " + id + "";
+                    table = globals.WloDatabase.GetDataTable(query, true);
+                    if (table.Rows.Count > 0)
+                        bRetVal = table.Rows[0];
+                    }
+                    catch (Exception fail)
+                {
+                    globals.Log("failed.\r\n");
+                    String error = "The following error has occurred:\n\n";
+                    error += fail.Message.ToString() + "\n\n";
+                    System.Windows.Forms.MessageBox.Show(error);
+                }
+                }
+                else
+                {
+                    try
                 {
 
                     DataTable table;
@@ -328,6 +423,8 @@ namespace PServer_v2.NetWork.Managers
                     error += fail.Message.ToString() + "\n\n";
                     System.Windows.Forms.MessageBox.Show(error);
                 }
+                }
+                
             }
             return bRetVal;
         }
@@ -629,6 +726,42 @@ namespace PServer_v2.NetWork.Managers
             p.character = target;
             p.Send();
         }
+        public bool putIteminStorage(cInvItem givenItem)
+        {
+            
+            foreach(var itemArray in own.storage.mainInv)
+            {
+                foreach(var item in itemArray)
+                {
+                    if(item.ID == givenItem.ID)
+                    {
+                        //check if stackable
+                        if (item.itemtype.Stackable)
+                        {
+                            //check if ammount is good
+                            if( item.ammt + givenItem.ammt <= 50)
+                            {
+                                item.ammt += givenItem.ammt;
+                                globals.Log("Done1");
+                                return true;
+                            }
+                            else
+                            {
+                                int needed = 50 - item.ammt;
+                                int difference = givenItem.ammt - needed;
+                                item.ammt = (byte)50;
+                                PlaceItem(item, (byte)difference);
+                                globals.Log("Done2");
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            globals.Log("Done3");
+            PlaceItem(givenItem,givenItem.ammt);
+            return true;
+        }
         public void Send_Inventory() //user's primary inventory
         {
             byte[] data = own.inv.Get_23_5();
@@ -637,6 +770,16 @@ namespace PServer_v2.NetWork.Managers
             p.AddArray(data);
             p.SetSize();
             p.character = own; ;
+            p.Send();
+        }
+        public void Send_Storage()
+        {
+            byte[] data = own.storage.Get_23_5();
+            cSendPacket p = new cSendPacket(globals);
+            p.Header(30,1);
+            p.AddArray(data);
+            p.SetSize();
+            p.character = own;
             p.Send();
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PServer_v2.DataLoaders;
+using PServer_v2.NetWork.Managers;
 
 namespace PServer_v2.NetWork.DataExt
 {
@@ -118,12 +119,17 @@ namespace PServer_v2.NetWork.DataExt
                         return false;
                 return false;
         }
+        
         public void Update(List<cCharacter> t,cGlobals g)
         {
             for (int a = 0; a < t.Count; a++)
                 if (!t[a].warping)
                     Walk(t[a], g);
             LastMove = g.UpTime.Elapsed;
+        }
+        public double calculateDistance(uint x1,uint y1, uint x2, uint y2)
+        {
+            return Math.Sqrt(Math.Pow(((double)x1 - (double)x2), 2) + Math.Pow(((double)y1 - (double)y2), 2));
         }
         public void Walk(cCharacter src,cGlobals g)
         {
@@ -142,7 +148,66 @@ namespace PServer_v2.NetWork.DataExt
                 y.Send();
             }
             //send new step
-            y = new cSendPacket(g);
+            if(src != null)
+            {
+                var distance = calculateDistance(src.x,src.y,walksteps[step].x,walksteps[step].y);
+                
+                if(distance < 300)
+                    {
+                        
+                        y = new cSendPacket(g);
+                        y.Header(22, 2);
+                        y.AddWord(this.clickId);
+                        y.AddWord((ushort)src.x);
+                        y.AddWord((ushort)src.y);
+                        y.AddByte(3);
+                        y.SetSize();
+                        step++;
+                        y.SetSize();
+                        y.character = src;
+                        y.Send();
+
+                    //trial for ambush
+                    try
+                    {
+                        
+                        if(src.inbattle != true)
+                        {
+                            globals.Log(this.npcId.ToString());
+                            globals.Log(this.clickId.ToString());
+                            PServer_v2.DataLoaders.Npc target = globals.gNpcManager.GetNpcbyID((ushort)this.npcId);
+                            
+                            if(target.Type == (byte)7)
+                            {
+                                g.Log(target.PK_NPC.ToString());
+                                cFighter f = new cFighter(globals);
+                                f.character = null;
+                                f.SetFrom(target);
+                                f.pet = false;
+
+                                f.player = false;
+                                f.ready = false;
+                                f.ukval1 = 3; 
+                                f.type = (byte)2;
+                                f.clickID = this.clickId;
+                                cMap m = g.gMapManager.GetMapByID(src.map.MapID);
+                                if (m != null)
+                                {
+                                    m.StartAmbush(src,f);
+                                }
+                            }
+                           
+                        }
+                        
+                    }
+                    catch (Exception e){ 
+                    globals.Log(e.ToString());}
+                        
+
+                    }
+            else
+            {
+                y = new cSendPacket(g);
             y.Header(22, 2);
             y.AddWord(this.clickId);
             y.AddWord((ushort)this.walksteps[step].x);
@@ -153,6 +218,24 @@ namespace PServer_v2.NetWork.DataExt
             y.SetSize();
             y.character = src;
             y.Send();
+            }
+            }
+            else
+            {
+                y = new cSendPacket(g);
+            y.Header(22, 2);
+            y.AddWord(this.clickId);
+            y.AddWord((ushort)this.walksteps[step].x);
+            y.AddWord((ushort)this.walksteps[step].y);
+            y.AddByte(3);
+            y.SetSize();
+            step++;
+            y.SetSize();
+            y.character = src;
+            y.Send();
+            }
+            
+            
         }
 
         public void Interact(Interaction_Type l = Interaction_Type.none, byte answer = 0, byte slot = 0, byte ammt = 0)
