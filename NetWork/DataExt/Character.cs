@@ -50,7 +50,7 @@ namespace PServer_v2.NetWork.DataExt
         }
         #endregion
 
-        
+        public bool ambushed;
         cGlobals globals;
         public cSkills skills;
         //public GmSystem GMTools;

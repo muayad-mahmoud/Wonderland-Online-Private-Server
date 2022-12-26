@@ -47,7 +47,7 @@ UnknownByte10  :------->  0
 UnknownByte11  :------->  0
 UnknownByte12  :------->  0
 InstanceMarkID  :------->  40025
-InstanceLevelRequirement  :------->  110
+InstanceLevelRequirement  :------->  100
 InstanceTimeLimit  :------->  25
 InstanceCoordinateX  :------->  4022
 InstanceCoordinateY  :------->  815

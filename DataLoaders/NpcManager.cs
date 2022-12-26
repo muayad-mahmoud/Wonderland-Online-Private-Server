@@ -120,8 +120,10 @@ namespace PServer_v2.DataLoaders
             ColorCode4 = dwordXor(getDWord(data, ptr)); ptr += 4;
             Catchable = byteXor(data[ptr]); ptr++;
             UnknownByte2 = byteXor(data[ptr]); ptr++;
+            
             UnknownByte3 = byteXor(data[ptr]); ptr++;
             Level = byteXor(data[ptr]); ptr++;
+            
             HP = dwordXor(getDWord(data, ptr)); ptr += 4;
             SP = dwordXor(getDWord(data, ptr)); ptr += 4;
             STR = wordXor(getWord(data, ptr)); ptr += 2;

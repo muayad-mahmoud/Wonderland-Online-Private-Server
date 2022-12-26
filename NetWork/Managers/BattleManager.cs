@@ -475,9 +475,15 @@ namespace PServer_v2.NetWork.Managers
             rightside.CopyTo(re, leftside.Count);
             foreach (cFighter f in re)
             {
-                if (f.player)
-                    f.character.inbattle = false;
-                    RemFighter(f);
+                try{
+                    if (f.player)
+                    {
+                        f.character.inbattle = false;
+                        f.character.ambushed = false;
+                        RemFighter(f);
+                    }
+                }
+                catch { }
                     
             }
             this.delete = true;
@@ -918,7 +924,7 @@ namespace PServer_v2.NetWork.Managers
                 
                         
                     
-                globals.ac11.Send_250(background, flist, target);
+                globals.ac11.send_250_ambush(background, flist, target);
             }
             else
             {
@@ -1056,6 +1062,7 @@ namespace PServer_v2.NetWork.Managers
         public cBattle StartBattleAmbush(cCharacter starter, cFighter enemy) //TODO these should be lists of players
         {
             starter.inbattle = true;
+            starter.ambushed = true;
             globals.Log("Battle Started \r\n");
             cBattle battle = new cBattle(globals);
             battle.type = cBattle.eBattleType.normal;
@@ -1083,6 +1090,16 @@ namespace PServer_v2.NetWork.Managers
             enemy.placement = eFighterType.mobside;
             battle.AddFightertoLside(enemy);
             battle.Send_BattleInfo();
+            globals.ac20.Send_9();
+            cSendPacket p = new cSendPacket(globals);
+            p.Header(68,68);
+            p.AddByte(19);
+            p.AddByte(0);
+            p.AddByte(2);
+            p.character = starter;
+            p.SetSize();
+            p.Send();
+            globals.Log("Packet is sent\r\n");
             battle.StartRound();
             battle.active = true;
             battleList.Add(battle);

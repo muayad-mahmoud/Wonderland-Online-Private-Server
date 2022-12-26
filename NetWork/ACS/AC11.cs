@@ -103,8 +103,7 @@ namespace PServer_v2.NetWork.ACS
                         f.ukval1 = 3; 
                         f.type = pkType;
                         f.clickID = clickID;
-                        g.Log(targetID.ToString());
-                        g.Log(clickID.ToString());
+                        
                         cMap m = g.gMapManager.GetMapByID(c.map.MapID);
                         if (m != null)
                         {
@@ -135,16 +134,33 @@ namespace PServer_v2.NetWork.ACS
             p.Header(11, 5);
             foreach (cFighter f in flist)
             {
-                p.AddByte(f.ukval1);//p.AddByte(3); 
-                p.AddByte(f.type);
-                p.AddDWord(f.id);
-                p.AddWord(f.clickID); p.AddDWord(f.ownerID);
-                p.AddByte(f.x); p.AddByte(f.y);
-                p.AddDWord(f.maxhp); p.AddWord(f.maxsp);
-                p.AddDWord(f.curhp); p.AddWord(f.cursp);
-                p.AddByte(f.lvl);
-                p.AddByte((byte)f.element);
-                p.AddByte(f.rebirth); p.AddByte((byte)f.job);
+                if (target.ambushed)
+                {
+                    p.AddByte(f.ukval1);//p.AddByte(3); 
+                    p.AddByte(7);
+                    p.AddDWord(f.id);
+                    p.AddWord(f.clickID); p.AddDWord(f.ownerID);
+                    p.AddByte(f.x); p.AddByte(f.y);
+                    p.AddDWord(f.maxhp); p.AddWord(f.maxsp);
+                    p.AddDWord(f.curhp); p.AddWord(f.cursp);
+                    p.AddByte(f.lvl);
+                    p.AddByte((byte)f.element);
+                    p.AddByte(f.rebirth); p.AddByte((byte)f.job);
+                }
+                else
+                {
+                    p.AddByte(f.ukval1);//p.AddByte(3); 
+                    p.AddByte(f.type);
+                    p.AddDWord(f.id);
+                    p.AddWord(f.clickID); p.AddDWord(f.ownerID);
+                    p.AddByte(f.x); p.AddByte(f.y);
+                    p.AddDWord(f.maxhp); p.AddWord(f.maxsp);
+                    p.AddDWord(f.curhp); p.AddWord(f.cursp);
+                    p.AddByte(f.lvl);
+                    p.AddByte((byte)f.element);
+                    p.AddByte(f.rebirth); p.AddByte((byte)f.job);
+                }
+               
             }
             p.SetSize();
             p.character = target;
@@ -207,13 +223,16 @@ namespace PServer_v2.NetWork.ACS
             {
                 cSendPacket p = new cSendPacket(g);
                 p.Header(11, 250);
-                p.AddWord(background);
+                p.AddByte((byte)background);
                 foreach (cFighter f in flist)
                 {
+                    p.AddByte((byte)f.clickID);
                     p.AddByte(f.ukval1);
                     p.AddByte(f.type); 
                     p.AddDWord(f.id);
-                    p.AddWord(f.clickID); p.AddDWord(f.ownerID);
+                    p.AddWord(0);
+                    p.AddDWord(f.ownerID);
+                    
                     p.AddByte(f.x); p.AddByte(f.y);
                     p.AddDWord(f.maxhp); p.AddWord(f.maxsp);
                     p.AddDWord(f.curhp); p.AddWord(f.cursp);

@@ -173,11 +173,10 @@ namespace PServer_v2.NetWork.DataExt
                         
                         if(src.inbattle != true)
                         {
-                            globals.Log(this.npcId.ToString());
-                            globals.Log(this.clickId.ToString());
+                            
                             PServer_v2.DataLoaders.Npc target = globals.gNpcManager.GetNpcbyID((ushort)this.npcId);
                             
-                            if(target.Type == (byte)7)
+                            if(target.Type == (byte)7 && this.unknownbyte7 == (byte)2)
                             {
                                 g.Log(target.PK_NPC.ToString());
                                 cFighter f = new cFighter(globals);
@@ -187,7 +186,7 @@ namespace PServer_v2.NetWork.DataExt
 
                                 f.player = false;
                                 f.ready = false;
-                                f.ukval1 = 3; 
+                                f.ukval1 = 1; 
                                 f.type = (byte)2;
                                 f.clickID = this.clickId;
                                 cMap m = g.gMapManager.GetMapByID(src.map.MapID);

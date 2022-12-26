@@ -41,14 +41,14 @@ UnknownWord22  :------->  0
 UnknownWord23  :------->  0
 UnknownWord24  :------->  0
 UnknownWord25  :------->  0
-InstanceMaxPlayers  :------->  12
+InstanceMaxPlayers  :------->  10
 InstanceGuildRestricted  :------->  0
 UnknownByte10  :------->  0
 UnknownByte11  :------->  0
 UnknownByte12  :------->  0
 InstanceMarkID  :------->  40005
 InstanceLevelRequirement  :------->  40
-InstanceTimeLimit  :------->  20
+InstanceTimeLimit  :------->  30
 InstanceCoordinateX  :------->  1963
 InstanceCoordinateY  :------->  1358
 UnknownDword1  :------->  0

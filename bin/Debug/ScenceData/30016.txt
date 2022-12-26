@@ -1,5 +1,5 @@
 SceneID  :------->  30016
-SceneNameLength  :------->  10
+SceneNameLength  :------->  11
 SceneName  :------->  System.Byte[]
 UnknownByte1  :------->  6
 UnknownByte2  :------->  0
@@ -41,7 +41,7 @@ UnknownWord22  :------->  0
 UnknownWord23  :------->  0
 UnknownWord24  :------->  0
 UnknownWord25  :------->  0
-InstanceMaxPlayers  :------->  8
+InstanceMaxPlayers  :------->  6
 InstanceGuildRestricted  :------->  0
 UnknownByte10  :------->  0
 UnknownByte11  :------->  0

@@ -110,14 +110,24 @@ namespace PServer_v2
 
             try
             {
-                globals.gItemManager.LoadItems("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\Item.dat");
-                globals.gSceneManager.LoadScenes("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\SceneData.Dat");
-                globals.gEveManager.LoadFile("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\eve.EMG");
+                globals.gItemManager.LoadItems("C:\\pServer\\data\\Item.dat");
+                globals.gSceneManager.LoadScenes("C:\\pServer\\data\\SceneData.Dat");
+                globals.gEveManager.LoadFile("C:\\pServer\\data\\eve.EMG");
                 globals.gMapManager.SetListBox(listBox1);
                 globals.gskillManager = new DataLoaders.cSkillDat(globals);
-                globals.gskillManager.LoadSkills("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\Skill.Dat");
+                globals.gskillManager.LoadSkills("C:\\pServer\\data\\Skill.Dat");
                 globals.gNpcManager = new DataLoaders.NpcDat(globals);
-                globals.gNpcManager.LoadNpc("E:\\Wonderland Online-20210429T233513Z-001\\Wonderland Online\\data\\Npc.Dat");
+                globals.gNpcManager.LoadNpc("C:\\pServer\\data\\Npc.Dat");
+                
+                DataLoaders.Npc test1 = globals.gNpcManager.GetNpcbyID(17210);
+                DataLoaders.Npc test2 = globals.gNpcManager.GetNpcbyID(17211);
+                DataLoaders.Npc test3 = globals.gNpcManager.GetNpcbyID(17212);
+                DataLoaders.Npc test4 = globals.gNpcManager.GetNpcbyID(17213);
+                globals.Log($"name: {test1.NpcName} value {test1.UnknownWord14.ToString()}");
+                globals.Log($"name: {test2.NpcName} value {test2.UnknownWord14.ToString()}");
+                globals.Log($"name: {test3.NpcName} value {test3.UnknownWord14.ToString()}");
+                globals.Log($"name: {test4.NpcName} value {test4.UnknownWord14.ToString()}");
+
                 globals.gImMall_Manager = new ImMall_Manager(globals);
             }
             catch (Exception t) { MessageBox.Show(t.Message); }
